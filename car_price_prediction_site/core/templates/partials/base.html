@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'core/base.css' %}" />
+
+    {% block css_files %}
+    {% endblock %}
+
+    {% block javascript %}
+    {% endblock %}
+
+  </head>
+  
+  <body>
+    <header id="main-navigation">
+      <h1><a href="{% url 'home-page' %}">KEMTECH</a></h1>
+      <nav>
+        <a href="{% url 'home-page' %}">OVERVIEW</a>
+        <a href="{% url 'model-page' %}">PREDICT YOUR CAR PRICE</a>
+        <a href="{% url 'document-page' %}">DOCS</a>
+      </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>company</h4>
+            <ul>
+              <li>
+                <a href="#">About Us</a>
+              </li>
+              <li>
+                <a href="#">Our Services</a>
+              </li>
+              <li>
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="{% url 'model-page' %}">Getting Started with our Model</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Get Help</h4>
+            <ul>
+              <li>
+                <a href="{% url 'document-page' %}">FAQ</a>
+              </li>
+              <li>
+                <a href="{% url 'document-page' %}">Documentation</a>
+              </li>
+              <li>
+                <a href="#">Submit a Bug</a>
+              </li>
+              <li>
+                <a href="#">Report a Security Issue</a>
+              </li>
+              
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Get Involved</h4>
+            <ul>
+              <li>
+                <a href="#">Join Us</a>
+              </li>
+              <li>
+                <a href="#">Sponsor our Projects</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+              <li>
+                <a href="#">dress</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p>&copy; 2023 KEMTECH All rights reserved.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

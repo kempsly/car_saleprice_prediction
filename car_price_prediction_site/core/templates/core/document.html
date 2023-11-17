@@ -1,0 +1,59 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block title %}
+  Documentation for the model
+{% endblock %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'core/document.css' %}" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/document.js' %}"></script> 
+{% endblock %}
+
+{% block content %}
+  <section id="container-document">
+    <h1>Model Documentation</h1>
+
+    <div class="faqs-container">
+      <div class="faq active">
+        <h3 class="faq-title">How should we use this model?</h3>
+        <p class="faq-text">Make sure the read the documentation.</p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      {% for doc in documents %}
+        <div class="faq">
+          <h3 class="faq-title">{{ doc.name }}</h3>
+          <p class="faq-text" id="desc">{{ doc.definition }}</p>
+          <button class="faq-toggle">
+            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+ <script>
+const toggleBtns= document.querySelectorAll('.faq-toggle');
+
+toggleBtns.forEach(toggleBtn => {
+  toggleBtn.addEventListener('click', ()=>{
+    toggleBtn.parentNode.classList.toggle('active')
+  })
+});
+ </script>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block title %}
+  Prediction the price of the car
+{% endblock %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'core/model.css' %}" />
+{% endblock %}
+
+{% block content %}
+ 
+
+  <section id="model-intro">
+    <h2>Please Fill The form Below To Make Accurate Prediction</h2>
+  </section>
+
+  {% if response %}
+  <div id="alert">
+    <h2>The Selling Price is: {{ response }}</h2>
+  </div>
+{% endif %}
+
+  <div id="wrapper">
+    <div class="form-control">
+      <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="search">
+          <label for="Name" >Type the car name</label>
+          <input id="Name" name="Name" type="text" class="searchTerm" value ="BMW" />
+        </div>
+        <br />
+        <div class="search">
+          <label for="year">Car Manufacturing Year</label>
+          <input id="year" name="year" type="number" class="searchTerm" value="2010" />
+        </div>
+        <br />
+        <div class="search">
+          <label for="km_driven">Km Driven</label>
+          <input id="km_driven" name="km_driven" type="number" class="searchTerm" value="145500" />
+        </div>
+        <br />
+        <div class="search">
+          <label for="fuel">Fuel Required By The Car</label>
+          <select id="fuel" name="fuel" class="searchTerm">
+            {% comment %} <option selected>Fuel required by Car</option> {% endcomment %}
+            <option value="1">Petrol</option>
+            <option value="0">Diesel</option>
+            <option value="-1">CNG</option>
+            <option value="-1">LPG</option>
+          </select>
+        </div>
+        <br />
+        <div class="search">
+          <label for="dealer">Select Dealer Type</label>
+          <select id="dealer" name="dealer" class="searchTerm">
+            <option value="1">Individual</option>
+            <option value="0">Dealer</option>
+            <option value="-1">Other</option>
+          </select>
+        </div>
+        <br />
+        <div class="search">
+          <label for="trans">Select Transmission Type</label>
+          <select id="trans" name="trans" class="searchTerm">
+            <option value="1">Manual</option>
+            <option value="0">Automated</option>
+          </select>
+        </div>
+        <br />
+        <div class="search">
+          <label for="seats" >Number Of Seats</label>
+          <input id="seats" name="seats" type="number" class="searchTerm" value="2" />
+        </div>
+        <br />
+        <div class="search">
+          <label for="rpm">Torque In rpm</label>
+          <input id="rpm" name="rpm" type="number" class="searchTerm" value="2000"  />
+        </div>
+        <br />
+        <div class="search">
+          <label for="mil">Mileage Of The Car</label>
+          <input id="mil" name="mil" type="number" class="searchTerm" value="23.40"/>
+        </div>
+        <br />
+        <div class="search">
+          <label for="eng">Engine Power in cc</label>
+          <input id="eng" name="eng" type="number" class="searchTerm" value="1248.0" />
+        </div>
+        <br />
+        <div class="search">
+          <label for="power" >Choose The Max Power Range </label>
+          <input id="power" name="power" type="number" class="searchTerm" value="32" min="32" max="400" />
+        </div>
+        <br />
+        <div class="search">
+          <label for="owner">Select Ownership</label>
+          <select id="owner" name="owner" class="searchTerm">
+            <option value="1">First Owner</option>
+            <option value="2">Second Owner</option>
+            <option value="3">Third Owner</option>
+            <option value="4">Fourth and Above owner</option>
+            <option value="5">Test Drive Vehicle</option>
+          </select>
+        </div>
+
+        <button type="submit" name="pred_button" class="searchButton">
+          Submit
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+    {% comment %} {% if response %}
+      <h2>The Selling Price is: {{ response }}</h2>
+    {% endif %} {% endcomment %}
+  </div>
+{% endblock %}

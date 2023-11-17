@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block title %}
+  Prediction the price of the car
+{% endblock %}
+
+
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'core/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section id="welcome-word">
+    <h1>Welcome To Your Selling Car Price Predictor Website!</h1>
+    <p>This website was created in other to help business or any people to make quick and accurate prediction 
+    for the selling price of a given car based on several factors</p>
+  </section>
+
+  <section id="welcome-main">
+    <div class="container">
+    <div class="welcome-image">
+      <img src="{% static 'images/Bugatti_Bolide2.jpg' %}" alt="Car image" />
+    </div>
+    <div class="welcome-button">
+      <button> <a href="{% url "model-page"  %}">Get started</a></button>
+      <button> <a href="{% url "model-page"  %}">Learn More</a></button>
+    </div>
+  </div>
+  </section>
+
+{% endblock %}
